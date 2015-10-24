@@ -81,7 +81,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 492504}
   - 33: {fileID: 3396114}
-  - 65: {fileID: 6568052}
   - 23: {fileID: 2319426}
   m_Layer: 0
   m_Name: bot
@@ -189,6 +188,7 @@ GameObject:
   - 114: {fileID: 11477466}
   - 54: {fileID: 5405546}
   - 65: {fileID: 6515302}
+  - 82: {fileID: 8226788}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -317,7 +317,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 477392}
   - 33: {fileID: 3342492}
-  - 65: {fileID: 6535044}
   - 23: {fileID: 2385302}
   m_Layer: 0
   m_Name: top
@@ -555,7 +554,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149992}
   m_LocalRotation: {x: 0, y: .102757327, z: 0, w: .994706452}
-  m_LocalPosition: {x: -2.60100007, y: .485000014, z: -5.62300014}
+  m_LocalPosition: {x: 28.5, y: 1.89999998, z: 46.5999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477392}
@@ -1235,32 +1234,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.00000012, y: .869538784, z: 2.80370975}
-  m_Center: {x: -9.1993832e-05, y: .065230608, z: -.0062212781}
---- !u!65 &6535044
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169086}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6568052
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122910}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.75, y: .869538784, z: 1.09283173}
+  m_Center: {x: -7.46301375e-05, y: .065230608, z: .0235709734}
 --- !u!65 &6579792
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1341,6 +1316,75 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 22.2999992}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!82 &8226788
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149992}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!108 &10815742
 Light:
   m_ObjectHideFlags: 1
@@ -1421,6 +1465,9 @@ MonoBehaviour:
   reverseAcceleration: 4
   maxReverseSpeed: 7
   turnRate: 2
+  initialRev: {fileID: 8300000, guid: a88e182d2dcc02442aebe53ea01785b1, type: 3}
+  loopRev: {fileID: 8300000, guid: 45afd432edb303b47b5a2f75bbaa744c, type: 3}
+  stopRev: {fileID: 8300000, guid: c8c39b2b987f34d458fbd5231fb03477, type: 3}
 --- !u!136 &13617340
 CapsuleCollider:
   m_ObjectHideFlags: 1
