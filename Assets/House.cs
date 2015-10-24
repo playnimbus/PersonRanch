@@ -56,7 +56,9 @@ public class House : MonoBehaviour
 
     void Update()
     {
-        counter.transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
+        Vector3 camPos = Camera.main.transform.position;
+        camPos.y = transform.position.y;
+        counter.transform.rotation = Quaternion.LookRotation(transform.position - camPos);
     }
 
     private void UpdateText()
