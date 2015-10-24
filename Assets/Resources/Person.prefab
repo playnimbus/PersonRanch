@@ -269,6 +269,7 @@ MonoBehaviour:
   runRadius: 10
   hermit: 0
   stuckToCar: 0
+  avoidSpeed: 3
 --- !u!136 &13615966
 CapsuleCollider:
   m_ObjectHideFlags: 1

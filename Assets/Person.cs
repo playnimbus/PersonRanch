@@ -7,6 +7,7 @@ public class Person : MonoBehaviour
     public bool hermit;
     [HideInInspector]
     public bool stuckToCar;
+    public float avoidSpeed;
 
     private Car car;
     private Rigidbody rigidbody;    
@@ -77,7 +78,7 @@ public class Person : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             Vector3 diff = (transform.position - car.transform.position);
             diff.Normalize();
-            diff *= 1f * Time.deltaTime;
+            diff *= avoidSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(transform.position + diff);
             yield return wait;
