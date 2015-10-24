@@ -63,6 +63,7 @@ public class Person : MonoBehaviour
             if (IsNearCar())
                 break;
             rigidbody.velocity = Vector3.zero;
+            current = transform.position;
             current = Vector3.MoveTowards(current, end, 1f * Time.deltaTime);
             rigidbody.MovePosition(current);
             yield return wait;
