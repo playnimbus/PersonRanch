@@ -101,11 +101,7 @@ Material:
       data:
         first:
           name: _Glossiness
-<<<<<<< HEAD
-        second: .170000002
-=======
         second: 0
->>>>>>> origin/master
       data:
         first:
           name: _BumpScale
