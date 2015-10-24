@@ -16,6 +16,12 @@ public class KinematicOffOnCollision : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if(collision.gameObject.tag == "Player"){
 			gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
+			AudioSource source = gameObject.GetComponent<AudioSource>();
+			if(source!=null){
+				source.Play();
+			}
+
 		}
 	}
 
