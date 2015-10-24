@@ -107,7 +107,7 @@ public class Person : MonoBehaviour
 
     private bool EscapedCar()
     {
-        return Vector3.Distance(car.transform.position, transform.position) > runRadius * 0.5f;
+        return Vector3.Distance(car.GetFront(), transform.position) > runRadius * 0.5f;
     }
 
     public void AttachToCar()

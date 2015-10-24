@@ -82,6 +82,6 @@ public class Car : MonoBehaviour
 
     public Vector3 GetFront()
     {
-        return transform.position + new Vector3(Mathf.Cos(forward), 0, Mathf.Sin(forward));
+        return transform.position + (new Vector3(Mathf.Cos(forward), 0, Mathf.Sin(forward))) * 2;
     }
 }
