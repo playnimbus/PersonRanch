@@ -9,6 +9,7 @@ public class House : MonoBehaviour
 
     private List<Person> people = new List<Person>();
     private HashSet<Person> avoid = new HashSet<Person>();
+    private List<Person> hermits = new List<Person>();
 
     void Start()
     {
@@ -20,8 +21,6 @@ public class House : MonoBehaviour
         Person p = collision.gameObject.GetComponent<Person>();
         if (p != null)
         {
-            if (isFull) return;
-
             if (p.stuckToCar && !avoid.Contains(p))
             {
                 if (p.hermit)
@@ -29,8 +28,8 @@ public class House : MonoBehaviour
                     foreach (Person person in people)
                     {
                         person.gameObject.SetActive(true);
-                        p.transform.position = (person.transform.position - transform.position).normalized + transform.position;
-                        p.stuckToCar = false;
+                        //person.transform.position = (person.transform.position - transform.position).normalized + transform.position;
+                        //person.stuckToCar = false;
                         person.GetComponent<Rigidbody>().AddForce((person.transform.position - transform.position).normalized * person.GetComponent<Rigidbody>().mass, ForceMode.Impulse);
                         avoid.Add(person);
                     }
@@ -39,14 +38,17 @@ public class House : MonoBehaviour
 
                     p.DetachFromCar();
                     p.gameObject.SetActive(false);
-                    people.Add(p);
+                    hermits.Add(p);
+                    Invoke("ReleaseHermits", 5f);
                 }
                 else
                 {
-                    
-                    p.DetachFromCar();
-                    p.gameObject.SetActive(false);
-                    people.Add(p);
+                    if (!isFull)
+                    {
+                        p.DetachFromCar();
+                        p.gameObject.SetActive(false);
+                        people.Add(p);
+                    }
                 }
             }
 
@@ -74,5 +76,18 @@ public class House : MonoBehaviour
     void ClearAvoid()
     {
         avoid.Clear();
+    }
+
+    void ReleaseHermits()
+    {
+        foreach (Person person in hermits)
+        {
+            person.gameObject.SetActive(true);
+            // person.transform.position = (person.transform.position - transform.position).normalized + transform.position;
+            person.stuckToCar = false;
+            person.GetComponent<Rigidbody>().AddForce((person.transform.position - transform.position).normalized * person.GetComponent<Rigidbody>().mass, ForceMode.Impulse);
+        }
+
+        hermits.Clear();
     }
 }
