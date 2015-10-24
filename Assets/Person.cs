@@ -4,9 +4,12 @@ using System.Collections;
 public class Person : MonoBehaviour 
 {
     public float runRadius;
+    public bool hermit;
+    [HideInInspector]
+    public bool stuckToCar;
+
     private Car car;
-    private Rigidbody rigidbody;
-    private bool stuckToCar;
+    private Rigidbody rigidbody;    
 
     void Awake()
     {
@@ -112,9 +115,19 @@ public class Person : MonoBehaviour
 
     public void AttachToCar()
     {
-        StopAllCoroutines();
-        stuckToCar = true;
-        StartCoroutine(StickToCar());
+        // Check done to prevent bugginess
+        if (gameObject.activeSelf)
+        {
+            StopAllCoroutines();
+            stuckToCar = true;
+            StartCoroutine(StickToCar());
+        }
     }
 
+    public void DetachFromCar()
+    {
+        StopAllCoroutines();
+        stuckToCar = true;
+        StartCoroutine(MainLoop());
+    }
 }
