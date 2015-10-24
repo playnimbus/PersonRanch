@@ -61,7 +61,7 @@ public class Person : MonoBehaviour
         {
             if (IsNearCar())
                 break;
-
+            rigidbody.velocity = Vector3.zero;
             current = Vector3.MoveTowards(current, end, 1f * Time.deltaTime);
             rigidbody.MovePosition(current);
             yield return wait;
@@ -74,6 +74,7 @@ public class Person : MonoBehaviour
 
         while (Vector3.Distance(car.transform.position, transform.position) < runRadius * 1.25f)
         {
+            rigidbody.velocity = Vector3.zero;
             Vector3 diff = (transform.position - car.transform.position);
             diff.Normalize();
             diff *= 1f * Time.deltaTime;
@@ -110,7 +111,7 @@ public class Person : MonoBehaviour
 
     private bool EscapedCar()
     {
-        return Vector3.Distance(car.GetFront(), transform.position) > runRadius * 0.5f;
+        return Vector3.Distance(car.transform.position, transform.position) > runRadius * 0.5f;
     }
 
     public void AttachToCar()
@@ -127,6 +128,7 @@ public class Person : MonoBehaviour
     public void DetachFromCar()
     {
         StopAllCoroutines();
+        rigidbody.velocity = Vector3.zero;
         stuckToCar = true;
         StartCoroutine(MainLoop());
     }
