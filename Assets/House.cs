@@ -68,7 +68,7 @@ public class House : MonoBehaviour
         counter.text = people.Count + "/" + familySize;
     }
 
-    private bool isFull
+    public bool isFull
     {
         get { return people.Count == familySize; }
     }
