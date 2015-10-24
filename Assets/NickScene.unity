@@ -3686,7 +3686,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 33
 --- !u!1 &1756746882
 GameObject:
   m_ObjectHideFlags: 0
@@ -3959,6 +3959,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1879441666}
   - 108: {fileID: 1879441665}
+  - 114: {fileID: 1879441667}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4010,6 +4011,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 41
+--- !u!114 &1879441667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1879441664}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb6687620c67fb49914e94025c00f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!1 &1885784607
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,7 +4570,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11477466, guid: 872db715a789d45d2a99b8d506a8c00a, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 872db715a789d45d2a99b8d506a8c00a, type: 2}
