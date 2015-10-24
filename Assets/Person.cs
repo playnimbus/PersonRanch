@@ -6,6 +6,7 @@ public class Person : MonoBehaviour
     public float runRadius;
     private Car car;
     private Rigidbody rigidbody;
+    private bool stuckToCar;
 
     void Awake()
     {
@@ -29,7 +30,7 @@ public class Person : MonoBehaviour
         {
             yield return StartCoroutine(Idle(Random.value * 2f));
             if (IsNearCar()) yield return StartCoroutine(AvoidCar());
-            yield return StartCoroutine(Walk(new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)) * 3));
+            yield return StartCoroutine(Walk(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 3));
             if (IsNearCar()) yield return StartCoroutine(AvoidCar());
         }
     }
@@ -79,9 +80,41 @@ public class Person : MonoBehaviour
         }
     }
 
+    private IEnumerator StickToCar()
+    {
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();
+
+
+        while (stuckToCar)
+        {
+            if (EscapedCar())
+                break;
+
+            Vector3 diff = car.GetFront() - transform.position;
+            rigidbody.AddForce(diff * rigidbody.mass, ForceMode.Impulse);
+            yield return wait;
+        }
+
+        stuckToCar = false;
+        StartCoroutine(MainLoop());
+    }
+
+
     private bool IsNearCar()
     {
         return Vector3.Distance(car.transform.position, transform.position) < runRadius;
+    }
+
+    private bool EscapedCar()
+    {
+        return Vector3.Distance(car.transform.position, transform.position) > runRadius * 0.5f;
+    }
+
+    public void AttachToCar()
+    {
+        StopAllCoroutines();
+        stuckToCar = true;
+        StartCoroutine(StickToCar());
     }
 
 }

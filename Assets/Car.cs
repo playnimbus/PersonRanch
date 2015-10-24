@@ -48,11 +48,13 @@ public class Car : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             float factor = targetSpeed > 0 ? targetSpeed / maxForwardSpeed : -targetSpeed / maxReverseSpeed;
+            factor = Mathf.Max(factor, 0.5f);
             forward += turnRate * factor * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
             float factor = targetSpeed > 0 ? targetSpeed / maxForwardSpeed : -targetSpeed / maxReverseSpeed;
+            factor = Mathf.Max(factor, 0.5f);
             forward -= turnRate * factor * Time.deltaTime;
         }
 
@@ -67,5 +69,19 @@ public class Car : MonoBehaviour
         Vector3 deltaVel = targetVel - vel;
         Vector3 force = deltaVel * rigidbody.mass;
         rigidbody.AddForce(force, ForceMode.Impulse);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Person p = collision.gameObject.GetComponent<Person>();
+        if (p != null)
+        {
+            p.AttachToCar();
+        }
+    }
+
+    public Vector3 GetFront()
+    {
+        return transform.position + new Vector3(Mathf.Cos(forward), 0, Mathf.Sin(forward));
     }
 }
